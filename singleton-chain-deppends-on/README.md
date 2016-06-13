@@ -1,6 +1,6 @@
 ### DependsOn ejb singletons
 - Start application: mvn clean package org.codehaus.cargo:cargo-maven2-plugin:run
-- Application url: http://localhost:8080/singleton-chain/example
+- Application url: http://localhost:8080/singleton-chain-deppends-on/example
 
 ### Notes
 - First application start (mvn command) take's several minutes cargo plugin need to download wildfly.
