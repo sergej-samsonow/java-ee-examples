@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import javax.ejb.Singleton;
 import javax.inject.Inject;
 
-@Singleton(name = "SecondClass")
+@Singleton
 public class SecondClass {
 
     @Inject

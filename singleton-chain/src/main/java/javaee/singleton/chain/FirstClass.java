@@ -8,7 +8,6 @@ import javax.ejb.Singleton;
 import javax.inject.Inject;
 
 @Singleton
-@DependsOn("SecondClass")
 public class FirstClass {
 
     @Inject
