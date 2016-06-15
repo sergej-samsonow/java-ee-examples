@@ -3,7 +3,6 @@ package javaee.singleton.chain;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import javax.ejb.DependsOn;
 import javax.ejb.Singleton;
 import javax.inject.Inject;
 
