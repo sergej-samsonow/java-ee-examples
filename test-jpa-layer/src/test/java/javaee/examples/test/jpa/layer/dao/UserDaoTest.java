@@ -4,7 +4,6 @@ import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.Mockito.spy;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 import java.util.List;
@@ -31,7 +30,6 @@ public class UserDaoTest {
     @Before
     public void prepare() {
         em = JpaProvider.instance().getEntityManager();
-        spy(em);
         initMocks(this);
     }
 
