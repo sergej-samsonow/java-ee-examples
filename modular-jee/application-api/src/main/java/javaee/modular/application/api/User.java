@@ -3,7 +3,7 @@ public class User {
 
     private String name;
 
-    public User(String fistName) {
+    public User(String name) {
         super();
         this.name = name;
     }
