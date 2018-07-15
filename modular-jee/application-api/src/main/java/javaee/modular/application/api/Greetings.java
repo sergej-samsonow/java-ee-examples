@@ -5,5 +5,6 @@ import javax.ejb.Local;
 @Local
 public interface Greetings {
 
-	public GreetingsMessage greet(User user);
+    public GreetingsMessage greet(User user);
+
 }
