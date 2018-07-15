@@ -30,3 +30,7 @@ each of them is javaee deployment unit.
    that are loaded dynamically. Api component is packgaged as ejb.jar and
    contains all shared objectes that are used by application itself and from
    other deployment units.
+2. Application itself is simple war package jax-rx + ejb application it has the
+   only one dependency api component dependcy described in pom.xml. Application
+   can't be deployed without api components so api components must be deployed
+   with application at same time or before application is deployed.
