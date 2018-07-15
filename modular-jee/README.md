@@ -39,3 +39,42 @@ each of them is javaee deployment unit.
    and this component know nothing about each other the only one thing they know
    is api component. Interaction between application and dynamic component 
    happens with EJB + JNDI Technology.
+
+## Build
+This example don't uses maven multiproject model for better understanding but 
+you have to pay attention to build and install application-api project first 
+before you build other project.
+1. Open you shell go into `application-api` build project with 
+   `mvn clean install` install option is important here because other projects
+   using application-api dependecy so they have to be installed into you local
+   maven repository.
+2. Got to `application` build project with `mvn clean package`
+3. Repeat step 2 for the `dynamic` project
+
+
+## Runnging
+1. Start wildfly application server in standalone mode look into Wildfly topic if
+   you unsure what to do
+2. Copy artifact `application-api\target\application-api.jar` to wildlfy
+   `standalone\deployments` folder after a couple of seconds youw will see 
+   `application-api.jar.deployed` in `standalone\deployments` folder
+3. Repeat step 2 for `application\target\application.war` artifact
+4. Now open `http://localhost:8080/application/?name=Thomas` for example 
+   in you favorite browser you will see json response object.
+5. Now open `http://localhost:8080/application/?name=Thomas&module=dynamic/RussianGreetings` 
+   and you will see the same greetings message with some warning messages because
+   dynamic module is not loaded yet.
+6. Keep wildfly running and repeat step 2 for `dynamc\target\dynamic.jar`.
+7. After you see file `dynamic.jar.deployed` in `standalone\deployments` folder
+   repeat step 5 you will see the russian greeting and warning messages will be gone.
+8. Rename file `standalone\deployments\dynamic.jar.deployed` to
+   `standalone\deployments\dynamic.jar.doundeploy` to undeploy dynamic component
+9. After you see file `dynamic.jar.undeployed` in `standalone\deployments` folder.
+   Repeat step 5 you will see fallback greetings and warnings again.
+10. You can rename `dynamic.jar.doundeploy` to  `dynamic.jar.dodeploy` to deploy
+   dynamic module one more time again.
+
+## Facit
+For my opinion javaee is great technology but sometime realy hard to understand
+this example demostrate capabilities for modular and extensible webapplication 
+that can be extended or reconfigured without application downtime.
