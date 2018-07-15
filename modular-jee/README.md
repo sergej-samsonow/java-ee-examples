@@ -34,3 +34,8 @@ each of them is javaee deployment unit.
    only one dependency api component dependcy described in pom.xml. Application
    can't be deployed without api components so api components must be deployed
    with application at same time or before application is deployed.
+3. Dynamic greeting this component contains ejb that greets customer in
+   russian language. This component can be used to extend appication. Application
+   and this component know nothing about each other the only one thing they know
+   is api component. Interaction between application and dynamic component 
+   happens with EJB + JNDI Technology.

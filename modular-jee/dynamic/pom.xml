@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--
+    This module represent dynamic component that can be deployed / undeployed without donwtime for
+    the main application.
+    -->
+    <groupId>javaee-modular</groupId>
+    <artifactId>dynamic</artifactId>
+    <version>2018-07.01</version>
+    <packaging>ejb</packaging>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--
+        Important step add api dependency this another one ejb component.
+        -->
+        <dependency>
+            <groupId>javaee-modular</groupId>
+            <artifactId>application-api</artifactId>
+            <version>1.0.0</version>
+            <type>ejb</type>
+            <scope>provided</scope>
+        </dependency>        
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ejb-plugin</artifactId>
+                <version>3.0.1</version>
+
+                <!--
+                Second important step we need to tell application server to load application-api and this 
+                deployment unit with the same class loader to get classes we references from api package
+                -->
+                <configuration>
+                    <ejbVersion>3.2</ejbVersion>
+                    <archive>
+                        <manifestEntries>
+                            <Dependencies>deployment.application-api.jar</Dependencies>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
