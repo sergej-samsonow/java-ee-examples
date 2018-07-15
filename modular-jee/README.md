@@ -2,7 +2,6 @@
 This project is example application how to use portable JNDI and ejb jars to
 design modular javaee applications.
 
-
 ## Precoditions
 JDK and maven installations are needed to build and execute this example. 
 This application was tested with Wildfly application server, wildfly 
@@ -23,3 +22,11 @@ excution path.
 6. To stop wildfly server enter ``Ctr+Shift+C`` in wildfly shell you started
    at point 4
 
+
+## About application
+Application is simple greeting service, application is splitted into 3 components
+each of them is javaee deployment unit.
+1. Api component is glue between application deployment unit and other components
+   that are loaded dynamically. Api component is packgaged as ejb.jar and
+   contains all shared objectes that are used by application itself and from
+   other deployment units.
